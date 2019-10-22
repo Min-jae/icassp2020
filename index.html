@@ -14,13 +14,23 @@
 
 <div><b>Paper:</b> Submitted to ICASSP 2020</div>
 <div><b>Authors:</b> Min-Jae Hwang, Eunwoo Song, Ryuichi Yamamoto, Frank Soong and Hong-Goo Kang</div>
-<div><b>Abstract:</b> In this paper, we propose an improved LPCNet vocoder using a linear prediction (LP)-structured mixture density network (MDN).
-The recently proposed LPCNet vocoder has successfully achieved high-quality and lightweight speech synthesis systems by combining a vocal tract LP filter with a WaveRNN-based vocal source, i.e., excitation, generatior.
-However, the quality of synthesized speech is often unstable because the vocal source component is insufficiently represented by the $\mu$-law quantization method, and the model is trained without considering the entire speech production mechanism.
-To address this problem, we first introduce LP-MDN, which enables the autoregressive neural vocoder to structurally represent the interactions between the vocal tract and vocal source components. % as a form of LP filter.
-Then, we proposed to incorporate the LP-MDN to the LPCNet vocoder by replacing the conventional discretized output distribution with continuous high-resolution output distribution.
-%		Moreover, the synthesis quality can be further improved by replacing the conventional soft-max output in LPCNet with mixture of Gaussians generating high resolution of speech signal.
-The experimental results verify that the proposed system achieves highly qualified neural vocoder by achieving 4.51 mean opinion score.
+<div><b>Abstract:</b> In this paper, we propose an improved LPCNet vocoder using a 
+linear prediction (LP)-structured mixture density network (MDN).
+The recently proposed LPCNet vocoder has successfully achieved
+high-quality and lightweight speech synthesis systems by combining a vocal tract LP filter with a WaveRNN-based vocal source,
+i.e., excitation, generator. However, the quality of synthesized
+speech is often unstable because the vocal source component is insufficiently represented by the µ-law quantization method, and the
+model is trained without considering the entire speech production
+mechanism. To address this problem, we first introduce LP-MDN,
+which enables the autoregressive neural vocoder to structurally
+represent the interactions between the vocal tract and vocal source
+components. Then, we proposed to incorporate the LP-MDN to the
+LPCNet vocoder by replacing the conventional discretized output
+distribution with continuous high-resolution output distribution.
+The experimental results verify that the proposed system provides
+high quality synthetic speech by achieving 4.41 mean opinion score
+within a text-to-speech framework.
+
 </div>
 
 <style type="text/css">
