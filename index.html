@@ -1,0 +1,417 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Improvement of LPCNet vocoder with linear prediction-structured mixture density network
+	</title>
+</head>
+<body>
+
+<article>
+    <header>
+        <h1>Improvement of LPCNet vocoder with linear prediction-structured mixture density network</h1>
+    </header>
+</article>
+
+<div><b>Paper:</b> Submitted to ICASSP 2020</div>
+<div><b>Authors:</b> Min-Jae Hwang, Eunwoo Song, Ryuichi Yamamoto, Frank Soong and Hong-Goo Kang</div>
+<div><b>Abstract:</b> In this paper, we propose an improved LPCNet vocoder using a linear prediction (LP)-structured mixture density network (MDN).
+The recently proposed LPCNet vocoder has successfully achieved high-quality and lightweight speech synthesis systems by combining a vocal tract LP filter with a WaveRNN-based vocal source, i.e., excitation, generatior.
+However, the quality of synthesized speech is often unstable because the vocal source component is insufficiently represented by the $\mu$-law quantization method, and the model is trained without considering the entire speech production mechanism.
+To address this problem, we first introduce LP-MDN, which enables the autoregressive neural vocoder to structurally represent the interactions between the vocal tract and vocal source components. % as a form of LP filter.
+Then, we proposed to incorporate the LP-MDN to the LPCNet vocoder by replacing the conventional discretized output distribution with continuous high-resolution output distribution.
+%		Moreover, the synthesis quality can be further improved by replacing the conventional soft-max output in LPCNet with mixture of Gaussians generating high resolution of speech signal.
+The experimental results verify that the proposed system achieves highly qualified neural vocoder by achieving 4.51 mean opinion score.
+</div>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;margin:0px auto;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-uys7{border-color:inherit;text-align:center}
+.tg .tg-u5t2{font-weight:bold;font-size:14px;border-color:inherit;text-align:center}
+.tg .tg-r9mt{background-color:#f9f9f9;font-weight:bold;font-size:14px;border-color:inherit;text-align:center}
+.tg .tg-aj9k{background-color:#f9f9f9;border-color:inherit;text-align:center}
+</style>
+
+<h3> <br/></h3>
+<div>
+    <table>
+        <tr>
+            <td class="transcript"> Recorded
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/ref/fkhy000066.wav">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Analysis / synthesis ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/spch/fkhy000066.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/lpcnet/fkhy000066.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/ilpcnet/fkhy000066.wav">
+					</audio>
+				</td>
+			</tr>
+        </tr>
+		<h3> <br><br/></h3>
+
+        <tr>
+			<td class="transcript"> ---- Text-to-speech ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/spch/fkhy000066.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/lpcnet/fkhy000066.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/ilpcnet/fkhy000066.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				</td>
+			</tr>
+        </tr>
+		<td class="transcript">  
+		</td>
+    </table>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <td class="transcript"> Recorded
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/ref/fkhy000132.wav">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Analysis / synthesis ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/spch/fkhy000132.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/lpcnet/fkhy000132.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/ilpcnet/fkhy000132.wav">
+					</audio>
+				</td>
+			</tr>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Text-to-speech ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/spch/fkhy000132.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/lpcnet/fkhy000132.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/ilpcnet/fkhy000132.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				</td>
+			</tr>
+        </tr>
+		<td class="transcript">  
+		</td>
+    </table>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <td class="transcript"> Recorded
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/ref/fkhy000198.wav">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Analysis / synthesis ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/spch/fkhy000198.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/lpcnet/fkhy000198.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/ilpcnet/fkhy000198.wav">
+					</audio>
+				</td>
+			</tr>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Text-to-speech ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/spch/fkhy000198.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/lpcnet/fkhy000198.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/ilpcnet/fkhy000198.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				</td>
+			</tr>
+        </tr>
+		<td class="transcript">  
+		</td>
+    </table>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <td class="transcript"> Recorded
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <audio controls>
+                    <source src="wav/ref/fkhy000231.wav">
+                </audio>
+            </td>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Analysis / synthesis ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/spch/fkhy000231.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/lpcnet/fkhy000231.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/anasyn/ilpcnet/fkhy000231.wav">
+					</audio>
+				</td>
+			</tr>
+        </tr>
+        <tr>
+			<td class="transcript"> ---- Text-to-speech ----
+			</td>
+			</tr>
+				<td class="transcript"> WaveNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/spch/fkhy000231.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> LPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/lpcnet/fkhy000231.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				<td class="transcript"> Proposed iLPCNet vocoder
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<audio controls>
+						<source src="wav/spss/ilpcnet/fkhy000231.wav">
+					</audio>
+				</td>
+			</tr>
+			<tr>
+				</td>
+			</tr>
+        </tr>
+		<td class="transcript">  
+		</td>
+    </table>
+</div>
