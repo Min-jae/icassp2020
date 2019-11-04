@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Improving LPCNet-based Text-to-Speech with Linear Prediction-structured Mixture Density Network
@@ -11,411 +12,251 @@
         <h1>Improving LPCNet-based Text-to-Speech with Linear Prediction-structured Mixture Density Network</h1>
     </header>
 </article>
+<hr>
 
-<div><b>Paper:</b> Submitted to ICASSP 2020</div>
-<div><b>Authors:</b> Min-Jae Hwang, Eunwoo Song, Ryuichi Yamamoto, Frank Soong and Hong-Goo Kang</div>
-<div><b>Abstract:</b> In this paper, we propose an improved LPCNet vocoder using a linear prediction (LP)-structured mixture density network (MDN).
-The recently proposed LPCNet vocoder has successfully achieved high-quality and lightweight speech synthesis systems by combining a vocal tract LP filter with a WaveRNN-based vocal source, i.e., excitation, generator.
-However, the quality of synthesized speech is often unstable because the vocal source component is insufficiently represented by the $\mu$-law quantization method, and the model is trained without considering the entire speech production mechanism.
-To address this problem, we first introduce LP-MDN, which enables the autoregressive neural vocoder to structurally represent the interactions between the vocal tract and vocal source components.
-Then, we propose to incorporate the LP-MDN to the LPCNet vocoder by replacing the conventional discretized output with continuous density distribution.
-The experimental results verify that the proposed system provides high quality synthetic speech by achieving 4.41 mean opinion score within a text-to-speech framework.
-
+<div><h3><b>Paper</b> </h3>
+<div> <blockquote> Submitted to ICASSP 2020 </blockquote> </div>
+<div><h3><b>Authors</b> </h3>
+<blockquote> <div>Min-Jae Hwang, Eunwoo Song, Ryuichi Yamamoto, Frank Soong and Hong-Goo Kang</div> </blockquote> 
+<div><h3><b>Abstract</b> </h3>
+<blockquote> 
+<div> In this paper, we propose an improved LPCNet vocoder using a linear prediction (LP)-structured mixture density network (MDN). </div>
+<div> The recently proposed LPCNet vocoder has successfully achieved high-quality and lightweight speech synthesis systems by combining a vocal tract LP filter with a WaveRNN-based vocal source, i.e., excitation, generator.</div>
+<div> However, the quality of synthesized speech is often unstable because the vocal source component is insufficiently represented by the mu-law quantization method, and the model is trained without considering the entire speech production mechanism. </div>
+<div> To address this problem, we first introduce LP-MDN, which enables the autoregressive neural vocoder to structurally represent the interactions between the vocal tract and vocal source components.</div>
+<div> Then, we propose to incorporate the LP-MDN to the LPCNet vocoder by replacing the conventional discretized output with continuous density distribution.</div>
+<div> The experimental results verify that the proposed system provides high quality synthetic speech by achieving 4.41 mean opinion score within a text-to-speech framework.</div>
+</blockquote> 
 </div>
+<br/>
 
+<hr>
 <style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;margin:0px auto;}
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
-.tg .tg-uys7{border-color:inherit;text-align:center}
-.tg .tg-u5t2{font-weight:bold;font-size:14px;border-color:inherit;text-align:center}
-.tg .tg-r9mt{background-color:#f9f9f9;font-weight:bold;font-size:14px;border-color:inherit;text-align:center}
-.tg .tg-aj9k{background-color:#f9f9f9;border-color:inherit;text-align:center}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
 </style>
 
-<div>
-    <table>
-        <tr>
-            <td class="transcript"> Recorded
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <audio controls>
-                    <source src="wav/ref/fkhy000132.wav">
-                </audio>
-            </td>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Analysis / synthesis ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/spch/fkhy000132.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/lpcnet/fkhy000132.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/ilpcnet/fkhy000132.wav">
-					</audio>
-				</td>
-			</tr>
-        </tr>
-		<h3> <br><br/></h3>
+<h3 id="samples">Samples</h3>
 
-        <tr>
-			<td class="transcript"> ---- Text-to-speech ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/spch/fkhy000132.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/lpcnet/fkhy000132.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/ilpcnet/fkhy000132.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				</td>
-			</tr>
-        </tr>
-		<td class="transcript">  
-		</td>
-    </table>
-</div>
+<blockquote> 
+<h3 style="text-align:left">더구나, 국산 제품답지 않은 디자인과 색감이 눈에 띈다.</h3>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-lboi">Recorded</th>
+    <th class="tg-lboi">WaveNet</th>
+    <th class="tg-lboi">LPCNet</th>
+    <th class="tg-lboi">iLPCNet (ours)</th>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Analysis / Synthesis</td>
+    <td class="tg-lboi" rowspan="2">
+		<audio controls style="width: 140px;">
+			<source src="wav/ref/fkhy000132.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/spch/fkhy000132.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/lpcnet/fkhy000132.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/ilpcnet/fkhy000132.wav">
+		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Text-to-Speech</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/spch/fkhy000132.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/lpcnet/fkhy000132.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/ilpcnet/fkhy000132.wav">
+		</audio>
+	</td>
+  </tr>
+</table>
+
 <h3> <br/></h3>
+<h3 style="text-align:left">잔디밭에서 진행한 구조조정 토론회는, 잔디를 훼손하는 불법 행사로 탄압 받았다.</h3>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-lboi">Recorded</th>
+    <th class="tg-lboi">WaveNet</th>
+    <th class="tg-lboi">LPCNet</th>
+    <th class="tg-lboi">iLPCNet (ours)</th>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Analysis / Synthesis</td>
+    <td class="tg-lboi" rowspan="2">
+		<audio controls style="width: 140px;">
+			<source src="wav/ref/fkhy000198.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/spch/fkhy000198.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/lpcnet/fkhy000198.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/ilpcnet/fkhy000198.wav">
+		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Text-to-Speech</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/spch/fkhy000198.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/lpcnet/fkhy000198.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/ilpcnet/fkhy000198.wav">
+		</audio>
+	</td>
+  </tr>
+</table>
 
-<div>
-    <table>
-        <tr>
-            <td class="transcript"> Recorded
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <audio controls>
-                    <source src="wav/ref/fkhy000198.wav">
-                </audio>
-            </td>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Analysis / synthesis ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/spch/fkhy000198.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/lpcnet/fkhy000198.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/ilpcnet/fkhy000198.wav">
-					</audio>
-				</td>
-			</tr>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Text-to-speech ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/spch/fkhy000198.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/lpcnet/fkhy000198.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/ilpcnet/fkhy000198.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				</td>
-			</tr>
-        </tr>
-		<td class="transcript">  
-		</td>
-    </table>
-</div>
+<h3> <br/></h3>
+<h3 style="text-align:left">엘리베이터가 수리 중입니다.</h3>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-lboi">Recorded</th>
+    <th class="tg-lboi">WaveNet</th>
+    <th class="tg-lboi">LPCNet</th>
+    <th class="tg-lboi">iLPCNet (ours)</th>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Analysis / Synthesis</td>
+    <td class="tg-lboi" rowspan="2">
+		<audio controls style="width: 140px;">
+			<source src="wav/ref/fkhy000264.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/spch/fkhy000264.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/lpcnet/fkhy000264.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/ilpcnet/fkhy000264.wav">
+		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Text-to-Speech</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/spch/fkhy000264.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/lpcnet/fkhy000264.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/ilpcnet/fkhy000264.wav">
+		</audio>
+	</td>
+  </tr>
+</table>
 
-<div>
-    <table>
-        <tr>
-            <td class="transcript"> Recorded
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <audio controls>
-                    <source src="wav/ref/fkhy000264.wav">
-                </audio>
-            </td>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Analysis / synthesis ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/spch/fkhy000264.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/lpcnet/fkhy000264.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/ilpcnet/fkhy000264.wav">
-					</audio>
-				</td>
-			</tr>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Text-to-speech ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/spch/fkhy000264.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/lpcnet/fkhy000264.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/ilpcnet/fkhy000264.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				</td>
-			</tr>
-        </tr>
-		<td class="transcript">  
-		</td>
-    </table>
-</div>
 
-<div>
-    <table>
-        <tr>
-            <td class="transcript"> Recorded
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <audio controls>
-                    <source src="wav/ref/fkhy000297.wav">
-                </audio>
-            </td>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Analysis / synthesis ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/spch/fkhy000297.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/lpcnet/fkhy000297.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/anasyn/ilpcnet/fkhy000297.wav">
-					</audio>
-				</td>
-			</tr>
-        </tr>
-        <tr>
-			<td class="transcript"> ---- Text-to-speech ----
-			</td>
-			</tr>
-				<td class="transcript"> WaveNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/spch/fkhy000297.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> LPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/lpcnet/fkhy000297.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				<td class="transcript"> Proposed iLPCNet vocoder
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<audio controls>
-						<source src="wav/spss/ilpcnet/fkhy000297.wav">
-					</audio>
-				</td>
-			</tr>
-			<tr>
-				</td>
-			</tr>
-        </tr>
-		<td class="transcript">  
-		</td>
-    </table>
-</div>
+<h3> <br/></h3>
+<h3 style="text-align:left">택시를 잡을 수 있을지 모르겠어요.</h3>
+<table class="tg">
+  <tr>
+    <th class="tg-lboi"></th>
+    <th class="tg-lboi">Recorded</th>
+    <th class="tg-lboi">WaveNet</th>
+    <th class="tg-lboi">LPCNet</th>
+    <th class="tg-lboi">iLPCNet (ours)</th>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Analysis / Synthesis</td>
+    <td class="tg-lboi" rowspan="2">
+		<audio controls style="width: 140px;">
+			<source src="wav/ref/fkhy000297.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/spch/fkhy000297.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/lpcnet/fkhy000297.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/anasyn/ilpcnet/fkhy000297.wav">
+		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi">Text-to-Speech</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/spch/fkhy000297.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/lpcnet/fkhy000297.wav">
+		</audio>
+	</td>
+    <td class="tg-lboi">
+		<audio controls style="width: 140px;">
+			<source src="wav/spss/ilpcnet/fkhy000297.wav">
+		</audio>
+	</td>
+  </tr>
+</table>
+</blockquote> 
 
-<h2 id="acknowledgements">Acknowledgements</h2>
+<h3> <br/></h3>
+<hr>
 
-<p>Work performed with nVoice, Clova Voice, Naver Corp.</p>
+<h3 id="acknowledgements">Acknowledgements</h3>
+
+<p><b>Work performed with nVoice, Clova Voice, Naver Corp.</b></p>
